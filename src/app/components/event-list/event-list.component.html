@@ -2,7 +2,7 @@
   <div class="events-header">
     <h1 class="title">Latest Events</h1>
     <div class="control">
-      <div class="select is-primary">
+      <div class="select is-info">
         <select [(ngModel)]="category" (change)="onSelectCategory()">
           <option [ngValue]="null">All Categories</option>
           <option *ngFor="let cat of categories" [ngValue]="cat">{{cat}}</option>
@@ -15,7 +15,7 @@
       <app-event-list-item [event]="event"></app-event-list-item>
     </div>
     <div class="column" *ngIf="events && events.length == 0">
-      <h1 class="title is-1 is-primary">No events found</h1>
+      <h1 class="null-events title is-3 is-info"> <i class="fas fa-thumbs-down has-text-info"></i> No events found</h1>
     </div>
   </div>
 </div>
