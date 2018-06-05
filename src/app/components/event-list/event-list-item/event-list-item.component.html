@@ -16,8 +16,11 @@
       </div>
     </div>
     <div class="content">
-      <div class="tags">
-        <span class="tag is-primary is-rounded" *ngFor="let tag of event.tags">{{tag}}</span>
+      <div class="category">
+        <span class="tag is-grey is-rounded">{{event.category}}</span>
+      </div>
+      <div class="action">
+        <button class="button is-primary">Read more</button>
       </div>
     </div>
   </div>

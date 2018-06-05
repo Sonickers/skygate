@@ -6,5 +6,5 @@ export class EventModel {
     public free: Boolean;
     public price: Number;
     public image: String;
-    public tags: String[];
+    public category: String;
 }
