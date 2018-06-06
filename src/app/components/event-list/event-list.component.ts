@@ -25,14 +25,14 @@ export class EventListComponent implements OnInit {
   }
 
   getAllEvents() {
-    this.eventsService.getEvents().then(events => {
+    this.eventsService.getEvents().subscribe(events => {
       this.events = events;
     });
   }
 
   onSelectCategory() {
     if (this.category !== null) {
-      this.eventsService.getEventsForCategory(this.category).then(events => {
+      this.eventsService.getEventsForCategory(this.category).subscribe(events => {
         this.events = events;
       });
     } else {

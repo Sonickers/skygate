@@ -3,12 +3,16 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearcherComponent } from './components/searcher/searcher.component';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { EventListItemComponent } from './components/event-list/event-list-item/event-list-item.component';
 import { EventsService } from './services/events.service';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { EventDetailComponent } from './components/event-detail/event-detail.component';
 import { AllCategoriesComponent } from './components/all-categories/all-categories.component';
 
 @NgModule({
@@ -19,9 +23,13 @@ import { AllCategoriesComponent } from './components/all-categories/all-categori
     EventListComponent,
     EventListItemComponent,
     SignInComponent,
+    HomeComponent,
+    NotFoundComponent,
+    EventDetailComponent,
     AllCategoriesComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     FormsModule
   ],

@@ -1,16 +1,46 @@
 <div class="container">
-  <div class="events-header">
-    <h1 class="title">All Categories</h1>   
-  </div>
-  <div class="columns is-multiline">
-    <div class="column is-one-quarter">
-      <app-event-list-item [event]="event"></app-event-list-item>
-    </div>
-    <div class="column">
-    </div>
-    <div class="column">
-    </div>
-    <div class="column">
-    </div>
+  <div class="tabs is-toggle">
+    <ul>
+      <li class="is-active">
+        <a>
+          <span class="icon is-medium">
+            <i class="fas fa-image"></i>
+          </span>
+          <span>Parties</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <span class="icon is-medium">
+            <i class="fas fa-music"></i>
+          </span>
+          <span>Music</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <span class="icon is-medium">
+            <i class="fas fa-film"></i>
+          </span>
+          <span>Sport</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <span class="icon is-medium">
+            <i class="fas fa-file-alt"></i>
+          </span>
+          <span>Arts</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <span class="icon is-medium">
+            <i class="fas fa-file-alt"></i>
+          </span>
+          <span>Classes</span>
+        </a>
+      </li>
+    </ul>
   </div>
 </div>

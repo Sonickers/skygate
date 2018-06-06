@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { EventModel } from '../models/event.model';
+import { of, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { EventModel } from '../models/event.model';
 export class EventsService {
   private events: EventModel[] = [
     {
+      id: 1,
       title: 'Ozzy Osbourne Tour',
       location: 'Kraków Tauron Arena',
       date: '2018-06-26 19:00',
@@ -17,6 +19,7 @@ export class EventsService {
       category: 'Music'
     },
     {
+      id: 2,
       title: 'Harry Potter and the Crused Child',
       location: 'London Theatre',
       date: '2018-06-30 17:30',
@@ -27,6 +30,7 @@ export class EventsService {
       category: 'Arts'
     },
     {
+      id: 3,
       title: 'Nocny Kochanek',
       location: `Pol'and'Rock Festival`,
       date: '2018-08-02 23:00',
@@ -37,6 +41,7 @@ export class EventsService {
       category: 'Music'
     },
     {
+      id: 4,
       title: 'Florence + The Machine',
       location: `Pol'and'Rock Festival`,
       date: '2018-07-02 22:00',
@@ -47,6 +52,7 @@ export class EventsService {
       category: 'Music'
     },
     {
+      id: 5,
       title: 'Monster Jam',
       location: `Stadion Śląski, Chorzów`,
       date: '2018-08-22 16:00',
@@ -60,13 +66,17 @@ export class EventsService {
 
   constructor() { }
 
-  getEvents(): Promise<EventModel[]> {
-    return Promise.resolve(this.events);
+  getEvents(): Observable<EventModel[]> {
+    return of(this.events);
   }
 
-  getEventsForCategory(category): Promise<EventModel[]> {
-    return Promise.resolve(this.events.filter(event => {
+  getEventsForCategory(category): Observable<EventModel[]> {
+    return of(this.events.filter(event => {
       return event.category.toLowerCase() === category.toLowerCase();
     }));
+  }
+
+  getEvent(id: number): Observable<EventModel> {
+    return of(--id < this.events.length ? this.events[id] : null);
   }
 }
