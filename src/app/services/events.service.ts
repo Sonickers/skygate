@@ -15,7 +15,7 @@ export class EventsService {
       free: false,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor lacus quis placerat mattis. Vivamus odio ligula, ullamcorper ut mollis vel, feugiat eu leo.',
       price: 125,
-      image: 'https://imgc.allpostersimages.com/img/print/posters/ozzy-osbourne-pray_a-G-15093013-0.jpg',
+      image: 'http://www.jukeboxmetal.com/wp-content/uploads/ozzyosbourne2018lisbonposter.jpg',
       category: 'Music'
     },
     {
@@ -32,12 +32,12 @@ export class EventsService {
     {
       id: 3,
       title: 'Nocny Kochanek',
-      location: `Pol'and'Rock Festival`,
+      location: `Pol'and'Rock Festival, Kostrzyn nad Odrą`,
       date: '2018-08-02 23:00',
       free: true,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor lacus quis placerat mattis. Vivamus odio ligula, ullamcorper ut mollis vel, feugiat eu leo.',
       price: null,
-      image: 'https://www.goingapp.pl/storage/app/uploads/public/596/4ae/b64/thumb_118263_600x350_0_0_crop.jpg',
+      image: 'https://newsbook.pl/wp-content/uploads/2017/04/1-388.jpg',
       category: 'Music'
     },
     {
@@ -59,7 +59,7 @@ export class EventsService {
       free: true,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor lacus quis placerat mattis. Vivamus odio ligula, ullamcorper ut mollis vel, feugiat eu leo.',
       price: null,
-      image: 'https://www.chesapeakearena.com/assets/img/MonsterJam-event-detail-page-852x626-0343e52490.png',
+      image: 'https://cdn.mytheatreland.com/images/show/00093_show_portrait_large.jpg',
       category: 'Sport'
     },
   ];
