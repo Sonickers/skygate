@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { EventModel } from '../../models/event.model';
-import { EventsService } from '../../services/events.service';
-import { categories } from '../../models/categories';
 
 @Component({
   selector: 'app-event-list',
@@ -10,34 +8,12 @@ import { categories } from '../../models/categories';
   styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent implements OnInit {
-  events: EventModel[];
-  category: String;
-  categories: String[];
+  @Input() events: EventModel[];
 
   constructor(
-    private eventsService: EventsService,
   ) { }
 
   ngOnInit() {
-    this.category = null;
-    this.categories = categories;
-    this.getAllEvents();
-  }
-
-  getAllEvents() {
-    this.eventsService.getEvents().subscribe(events => {
-      this.events = events;
-    });
-  }
-
-  onSelectCategory() {
-    if (this.category !== null) {
-      this.eventsService.getEventsForCategory(this.category).subscribe(events => {
-        this.events = events;
-      });
-    } else {
-      this.getAllEvents();
-    }
   }
 
 }

@@ -1,0 +1,18 @@
+.events-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs {
+  ul {
+    justify-content: center;
+  }
+  li {
+    font-size: 20px;
+    font-weight: bold;
+  }
+ 
+} 
+.is-active {
+    color: black;
+}

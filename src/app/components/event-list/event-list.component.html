@@ -1,20 +1,9 @@
-<div class="container">
-  <div class="tabs is-centered is-boxed">
-    <ul>
-      <li class="is-active">
-        <a>
-          <span>New Events</span>
-        </a>
-      </li>
-    </ul>
+<div class="columns is-multiline">
+  <div class="column is-one-quarter" *ngFor="let event of events">
+    <app-event-list-item [event]="event"></app-event-list-item>
   </div>
-  <div class="columns is-multiline">
-    <div class="column is-one-quarter" *ngFor="let event of events">
-      <app-event-list-item [event]="event"></app-event-list-item>
-    </div>
-    <div class="column" *ngIf="events && events.length == 0">
-      <h1 class="null-events title is-3 is-info">
-        <i class="fas fa-thumbs-down has-text-info"></i> No events found</h1>
-    </div>
+  <div class="column" *ngIf="events && events.length == 0">
+    <h1 class="null-events title is-3 is-info">
+      <i class="fas fa-thumbs-down has-text-info"></i> No events found</h1>
   </div>
 </div>

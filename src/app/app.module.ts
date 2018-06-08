@@ -14,6 +14,9 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
 import { AllCategoriesComponent } from './components/all-categories/all-categories.component';
+import { UpcomingEventsComponent } from './components/upcoming-events/upcoming-events.component';
+import { CreateEventComponent } from './components/create-event/create-event.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { AllCategoriesComponent } from './components/all-categories/all-categori
     NotFoundComponent,
     EventDetailComponent,
     AllCategoriesComponent,
+    UpcomingEventsComponent,
+    CreateEventComponent,
+    FooterComponent,
   ],
   imports: [
     AppRoutingModule,

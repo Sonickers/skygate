@@ -1,19 +1,20 @@
-<div class="container">
-  <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
-    <ul>
-      <li>
-        <a href="#home">SkyTicket</a>
-      </li>
-      <li>
-        <a href="#">{{event?.category}}</a>
-      </li>
-      <li class="is-active">
-        <a aria-current="page">{{event?.title}}</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="columns is-multiline is-mobile">
-    <div class="column is-one-quarter">
+<section class="section">
+  <div class="container">
+    <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+      <ul>
+        <li>
+          <a href="/" routerLink="/">SkyTicket</a>
+        </li>
+        <li>
+          <a>{{event?.category}}</a>
+        </li>
+        <li class="is-active">
+          <a aria-current="page">{{event?.title}}</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="columns is-multiline">
+      <div class="column is-one-quarter">
       <figure class="image">
         <img [src]="event.image" alt="Placeholder image">
       </figure>
@@ -22,13 +23,15 @@
       <button class="button"><i class="fas fa-retweet" aria-hidden="true"></i></button>
       <button class="button"><i class="fas fa-heart" aria-hidden="true"></i></button>
     </div>
-    <div class="column">
-      <p class="event-title">
-        <strong>{{event?.title}}</strong>
-      </p>
-      <p>{{ event.date | date }}</p>
-      <p>{{event?.location}}</p>
-      <br><p>{{event?.description}}</p>
+      <div class="column">
+        <p class="event-title">
+          <strong>{{event?.title}}</strong>
+        </p>
+        <p>{{ event.date | date }}</p>
+        <p>{{event?.location}}</p>
+        <br>
+        <p>{{event?.description}}</p>
+      </div>
     </div>
-  </div> 
-</div>
+  </div>
+</section>

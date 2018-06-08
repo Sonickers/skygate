@@ -67,11 +67,17 @@ export class EventsService {
   constructor() { }
 
   getEvents(): Observable<EventModel[]> {
-    return of(this.events);
+    return of(this.events.slice());
+  }
+
+  getUpcomingEvents(): Observable<EventModel[]> {
+    return of(this.events.slice().sort((a,b) => {
+      return a.date > b.date ? 1 : -1;
+    }));
   }
 
   getEventsForCategory(category): Observable<EventModel[]> {
-    return of(this.events.filter(event => {
+    return of(this.events.slice().filter(event => {
       return event.category.toLowerCase() === category.toLowerCase();
     }));
   }

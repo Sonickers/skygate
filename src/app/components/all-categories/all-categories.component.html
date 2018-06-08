@@ -1,34 +1,37 @@
-<div id="all-categories" class="tabs is-centered is-boxed">
-  <ul>
-    <li class="is-active">
-      <a>
-        <span>All categories</span>
-      </a>
-    </li>
-    <li>
-      <a>
-        <span>Music</span>
-      </a>
-    </li>
-    <li>
-      <a>
-        <span>Arts</span>
-      </a>
-    </li>
-    <li>
-      <a>
-        <span>Sport</span>
-      </a>
-    </li>
-    <li>
-      <a>
-        <span>Classes</span>
-      </a>
-    </li>
-    <li>
-      <a>
-        <span>Parties</span>
-      </a>
-    </li>
-  </ul>
+<div class="container">
+  <div id="all-categories" class="tabs is-centered is-boxed">
+    <ul>
+      <li [ngClass]="{'is-active': currentCategory === null}">
+        <a (click)="onCategorySelect(null)">
+          <span>All categories</span>
+        </a>
+      </li>
+      <li [ngClass]="{'is-active': currentCategory === 'music'}">
+        <a (click)="onCategorySelect('music')">
+          <span>Music</span>
+        </a>
+      </li>
+      <li [ngClass]="{'is-active': currentCategory === 'arts'}">
+        <a (click)="onCategorySelect('arts')">
+          <span>Arts</span>
+        </a>
+      </li>
+      <li [ngClass]="{'is-active': currentCategory === 'sport'}">
+        <a (click)="onCategorySelect('sport')">
+          <span>Sport</span>
+        </a>
+      </li>
+      <li [ngClass]="{'is-active': currentCategory === 'classes'}">
+        <a (click)="onCategorySelect('classes')">
+          <span>Classes</span>
+        </a>
+      </li>
+      <li [ngClass]="{'is-active': currentCategory === 'parties'}">
+        <a (click)="onCategorySelect('parties')">
+          <span>Parties</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <app-event-list [events]="events"></app-event-list>
 </div>
