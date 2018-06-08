@@ -1,5 +1,5 @@
 <div class="box">
-  <article class="media">
+  <article class="media event">
     <div class="media-left">
       <figure class="image is-64x64">
         <img [src]="event.image" alt="Placeholder image">
@@ -7,37 +7,34 @@
     </div>
     <div class="media-content">
       <div class="content">
-        <p>
-          <strong>{{event.title}}</strong> 
-          <br><p>{{ event.date | date }}</p>
-          <br>
-           {{event.location}}
-           <br>
-          <span class="tag is-grey is-rounded">{{event.category}}</span>
-        </p>
+        <div class="event-title">{{event.title}}</div>
+        <div class="event-date">{{ event.date | date }}</div>
+        <div class="event-location">{{event.location}}</div>
       </div>
-      <nav class="level is-mobile">       
-        <div class="level-left">
-          <a class="level-item" aria-label="reply">
-            <span class="icon is-small">
-              <i class="fas fa-reply" aria-hidden="true"></i>
-            </span>
-          </a>
-          <a class="level-item" aria-label="retweet">
-            <span class="icon is-small">
-              <i class="fas fa-retweet" aria-hidden="true"></i>
-            </span>
-          </a>
-          <a class="level-item" aria-label="like">
-            <span class="icon is-small">
-              <i class="fas fa-heart" aria-hidden="true"></i>
-            </span>
-          </a>
-          <br><div class="action">
-            <a [href]="'/event/' + event.id" [routerLink]="['/event', event.id]" class="button is-info">Read more</a>
-          </div>
-        </div>
-      </nav>
     </div>
   </article>
+  <div class="event-category">
+    <span class="tag is-grey is-rounded">{{event.category}}</span>
+  </div>
+  <nav class="level is-mobile">
+    <a class="level-item" aria-label="reply">
+      <span class="icon is-small">
+        <i class="fas fa-reply" aria-hidden="true"></i>
+      </span>
+    </a>
+    <a class="level-item" aria-label="retweet">
+      <span class="icon is-small">
+        <i class="fas fa-retweet" aria-hidden="true"></i>
+      </span>
+    </a>
+    <a class="level-item" aria-label="like">
+      <span class="icon is-small">
+        <i class="fas fa-heart" aria-hidden="true"></i>
+      </span>
+    </a>
+    <br>
+    <div class="action">
+      <a [href]="'/event/' + event.id" [routerLink]="['/event', event.id]" class="button is-info is-small">Read more</a>
+    </div>
+  </nav>
 </div>

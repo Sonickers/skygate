@@ -1,24 +1,19 @@
 img {
     object-fit: cover;
+    transition: transform .5s;
 }
 
 img:hover {
     transform: scale(3.5);
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    opacity: 0.95;
 }
 
-.media {
-    .title {
-        min-height: 2em;
-        line-height: 1;
+.event {
+    min-height: 100px;
+
+    &-title {
+        font-weight: bold;
     }
-}
-
-.content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .box {
