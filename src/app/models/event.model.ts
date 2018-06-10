@@ -6,4 +6,5 @@ export class EventModel {
     public description: string;
     public image: string;
     public category: string;
+    public organizer: string;
 }

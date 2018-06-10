@@ -8,16 +8,27 @@ import { EventModel } from '../../models/event.model';
 })
 export class CreateEventComponent implements OnInit {
   event: EventModel;
+  dateObject: any;
 
   constructor() { }
 
   ngOnInit() {
     this.event = new EventModel();
-    console.log(this.event);
   }
 
   onSubmitEvent() {
     console.log(this.event);
   }
 
+  onDateSelected(dateObject) {
+    const { year, month, day } = dateObject;
+    this.event.date = `${year}-${month}-${day}`;
+  }
+
+  decideClosure(e, dp) {
+    const path = e.path.map(p => p.localName);
+    if (!path.includes('ngb-datepicker')) {
+      dp.close();
+    }
+  }
 }
