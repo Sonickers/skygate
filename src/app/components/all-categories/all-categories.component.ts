@@ -10,6 +10,7 @@ import { EventsService } from '../../services/events.service';
 export class AllCategoriesComponent implements OnInit {
   currentCategory: string;
   events: EventModel[];
+  total: number;
 
   constructor(
     private eventsService: EventsService
@@ -21,7 +22,10 @@ export class AllCategoriesComponent implements OnInit {
   }
 
   getAllEvents() {
-    this.eventsService.getEvents().subscribe(events => this.events = events);
+    this.eventsService.getEvents().subscribe(events => {
+      this.total = events.length;
+      this.events = events.slice(0, 8)
+    });
   }
 
   getEventsByCategory(category: string) {
@@ -37,6 +41,10 @@ export class AllCategoriesComponent implements OnInit {
     } else {
       this.getAllEvents();
     }
+  }
+
+  showAllEvents() {
+    this.eventsService.getEvents().subscribe(events => this.events = events);
   }
 
 }

@@ -30,5 +30,6 @@ export class EventDetailComponent implements OnInit {
   getCategoryClass() {
     return `event-${this.event.category.toLowerCase()}`;
   }
+  
 
 }

@@ -34,4 +34,5 @@
     </ul>
   </div>
   <app-event-list [events]="events"></app-event-list>
+  <button class="button" *ngIf="total > 8" (click)='showAllEvents()'>SHOW ALL EVENTS</button>
 </div>
