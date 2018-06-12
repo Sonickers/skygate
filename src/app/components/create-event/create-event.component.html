@@ -1,80 +1,87 @@
 <section class="hero is-medium">
   <div class="hero-body">
     <div class="box">
-      <div class="field">
-        <label class="label">Title</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Artist, name of event..." [(ngModel)]="event.title">
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Location</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Object name and city, country..." [(ngModel)]="event.location">
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Organizer</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Organizer of event..." [(ngModel)]="event.organizer">
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Event poster</label>
-        <div class="control">
-          <input class="input" type="url" placeholder="Link to image..." [(ngModel)]="event.image">
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Date</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="yyyy/mm/dd" [(ngModel)]="dateObject" (ngModelChange)="onDateSelected($event)" ngbDatepicker
-            #d="ngbDatepicker" (click)="d.toggle();$event.stopPropagation();" (document:click)="decideClosure($event, d)" [readOnly]="true">
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Category</label>
-        <div class="control">
-          <div class="select is-info">
-            <select>
-              <option>Music</option>
-              <option>Arts</option>
-              <option>Classes</option>
-              <option>Sport</option>
-              <option>Parties</option>
-            </select>
+      <form [formGroup]="form">
+        <div class="field">
+          <label class="label">Title</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Artist, name of event..." formControlName="title">
+            <p class="help is-danger" *ngIf="form.get('title').invalid && form.get('title').touched">
+              This field is required
+            </p>
           </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Description</label>
-        <div class="control">
-          <textarea class="textarea" placeholder="Information about event and tickets..." [(ngModel)]="event.description"></textarea>
+        <div class="field">
+          <label class="label">Location</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Object name and city, country..." formControlName="location">
+            <p class="help is-danger" *ngIf="form.get('location').invalid && form.get('location').touched">
+              This field is required
+            </p>
+          </div>
         </div>
-      </div>
 
-
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox"> I agree to the
-            <a href="#">terms and conditions</a>
-          </label>
+        <div class="field">
+          <label class="label">Organizer</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Organizer of event..." formControlName="organizer">
+            <p class="help is-danger" *ngIf="form.get('organizer').invalid && form.get('organizer').touched">
+              This field is required
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div class="field is-grouped is-grouped-centered">
-        <div class="control">
-          <button class="button is-link" (click)="onSubmitEvent()">Submit</button>
-          <button class="button">Cancel</button>
+        <div class="field">
+          <label class="label">Event poster</label>
+          <div class="control">
+            <input class="input" type="url" placeholder="Link to image..." formControlName="poster">
+          </div>
         </div>
-      </div>
+
+        <div class="field">
+          <label class="label">Date</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="yyyy/mm/dd" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle();$event.stopPropagation();"
+              (document:click)="decideClosure($event, d)" [readOnly]="true" formControlName="date">
+            <p class="help is-danger" *ngIf="form.get('date').invalid && form.get('date').touched">
+              This field is required
+            </p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Category</label>
+          <div class="control">
+            <div class="select is-info">
+              <select formControlName="category">
+                <option>Music</option>
+                <option>Arts</option>
+                <option>Classes</option>
+                <option>Sport</option>
+                <option>Parties</option>
+              </select>
+            </div>
+            <p class="help is-danger" *ngIf="form.get('category').invalid && form.get('category').touched">
+              This field is required
+            </p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <textarea class="textarea" placeholder="Information about event and tickets..." formControlName="description"></textarea>
+          </div>
+        </div>
+
+        <div class="field is-grouped is-grouped-centered">
+          <div class="control">
+            <button class="button is-link" (click)="onSubmitEvent()" [disabled]="form.invalid">Submit</button>
+            <a href="/" routerLink="/" class="button">Cancel</a>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </section>

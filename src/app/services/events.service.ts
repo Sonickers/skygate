@@ -130,4 +130,10 @@ export class EventsService {
   getEvent(id: number): Observable<EventModel> {
     return of(--id < this.events.length ? this.events[id] : null);
   }
+
+  addEvent(event: EventModel): Observable<boolean> {
+    event.id = this.events.length + 1;
+    this.events.push(event);
+    return of(true);
+  }
 }

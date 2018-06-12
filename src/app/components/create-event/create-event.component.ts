@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EventModel } from '../../models/event.model';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { EventsService } from '../../services/events.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-event',
@@ -7,28 +10,48 @@ import { EventModel } from '../../models/event.model';
   styleUrls: ['./create-event.component.scss']
 })
 export class CreateEventComponent implements OnInit {
-  event: EventModel;
-  dateObject: any;
+  form: FormGroup;
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private eventsService: EventsService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
-    this.event = new EventModel();
+    this.makeForm();
+  }
+
+  makeForm() {
+    this.form = this.formBuilder.group({
+      title: ['', Validators.required],
+      location: ['', Validators.required],
+      organizer: ['', Validators.required],
+      poster: '',
+      date: ['', Validators.required],
+      category: ['Music', Validators.required],
+      description: '',
+    });
   }
 
   onSubmitEvent() {
-    console.log(this.event);
+    const formValues = this.form.value;
+    formValues.date = `${formValues.date.year}-${formValues.date.month}-${formValues.date.day}`;
+    const event: EventModel = formValues;
+
+    this.eventsService.addEvent(event).subscribe(
+      res => {
+        if (res) {
+          this.router.navigate(['/']);
+        }
+      }
+    );
   }
 
-  onDateSelected(dateObject) {
-    const { year, month, day } = dateObject;
-    this.event.date = `${year}-${month}-${day}`;
-  }
-
-  decideClosure(e, dp) {
-    const path = e.path.map(p => p.localName);
+  decideClosure(event, datepicker) {
+    const path = event.path.map(p => p.localName);
     if (!path.includes('ngb-datepicker')) {
-      dp.close();
+      datepicker.close();
     }
   }
 }
