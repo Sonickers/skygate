@@ -4,7 +4,7 @@ export class EventModel {
     public location: string;
     public date: string;
     public description: string;
-    public image: string;
+    public poster: string;
     public category: string;
     public organizer: string;
 }

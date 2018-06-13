@@ -1,7 +1,8 @@
 <section class="hero is-medium">
   <div class="hero-body">
     <div class="box">
-      <form [formGroup]="form">
+      <h1 class="title" *ngIf="editing">Edit event</h1>
+      <form *ngIf="form" [formGroup]="form">
         <div class="field">
           <label class="label">Title</label>
           <div class="control">
@@ -43,7 +44,7 @@
           <label class="label">Date</label>
           <div class="control">
             <input class="input" type="text" placeholder="yyyy/mm/dd" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle();$event.stopPropagation();"
-              (document:click)="decideClosure($event, d)" [readOnly]="true" formControlName="date">
+              (document:click)="decideClosure($event, d)" formControlName="date" [readOnly]="true">
             <p class="help is-danger" *ngIf="form.get('date').invalid && form.get('date').touched">
               This field is required
             </p>
@@ -77,8 +78,8 @@
 
         <div class="field is-grouped is-grouped-centered">
           <div class="control">
-            <button class="button is-link" (click)="onSubmitEvent()" [disabled]="form.invalid">Submit</button>
-            <a href="/" routerLink="/" class="button">Cancel</a>
+            <button class="button is-link" (click)="onSubmitEvent($event)" [disabled]="form.invalid">Submit</button>
+            <button class="button" (click)="cancelCreateEdit()">Cancel</button>
           </div>
         </div>
       </form>

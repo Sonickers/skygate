@@ -14,10 +14,10 @@
             </ul>
           </nav>
           <div class="action-buttons">
-            <button class="button">
+            <button class="button" [routerLink]="['/event', event?.id, 'edit']">
               <i class="fas fa-edit"></i>
             </button>
-            <button class="button">
+            <button class="button" (click)="removeEvent()">
               <i class="fas fa-trash-alt"></i>
             </button>
           </div>
@@ -25,7 +25,7 @@
         <div class="columns is-multiline">
           <div class="column is-one-quarter">
             <figure class="image">
-              <img [src]="event.image" alt="Placeholder image">
+              <img [src]="event?.poster || 'http://via.placeholder.com/260x325?text=No%20image'" alt="Placeholder image">
             </figure>
             <div class="detail-event-buttons">
               <button class="button is-info">Get Tickets</button>
@@ -46,7 +46,7 @@
             </p>
             <p>
               <strong>DATE AND TIME:</strong>
-              <br>{{ event.date | date }}</p>
+              <br>{{ event?.date | date }}</p>
             <br>
             <p>
               <strong>LOCATION:</strong>

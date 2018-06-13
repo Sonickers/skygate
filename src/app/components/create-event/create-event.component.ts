@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventModel } from '../../models/event.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EventsService } from '../../services/events.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-event',
@@ -11,11 +11,14 @@ import { Router } from '@angular/router';
 })
 export class CreateEventComponent implements OnInit {
   form: FormGroup;
+  editing = false;
+  editId: number;
 
   constructor(
     private formBuilder: FormBuilder,
     private eventsService: EventsService,
     private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
@@ -23,29 +26,76 @@ export class CreateEventComponent implements OnInit {
   }
 
   makeForm() {
-    this.form = this.formBuilder.group({
-      title: ['', Validators.required],
-      location: ['', Validators.required],
-      organizer: ['', Validators.required],
-      poster: '',
-      date: ['', Validators.required],
-      category: ['Music', Validators.required],
-      description: '',
+    this.route.params.subscribe(params => {
+      if (params.id) {
+        this.editing = true;
+        this.eventsService.getEvent(+params.id).subscribe(event => {
+          this.editId = event.id;
+          this.form = this.formBuilder.group({
+            title: [event.title, Validators.required],
+            location: [event.location, Validators.required],
+            organizer: [event.organizer, Validators.required],
+            poster: event.poster,
+            date: [event.date, Validators.required],
+            category: [event.category, Validators.required],
+            description: event.description,
+          });
+        });
+      } else {
+        this.form = this.formBuilder.group({
+          title: ['', Validators.required],
+          location: ['', Validators.required],
+          organizer: ['', Validators.required],
+          poster: '',
+          date: ['', Validators.required],
+          category: ['Music', Validators.required],
+          description: '',
+        });
+      }
     });
   }
 
-  onSubmitEvent() {
+  onSubmitEvent(e) {
+    e.preventDefault();
+
     const formValues = this.form.value;
-    formValues.date = `${formValues.date.year}-${formValues.date.month}-${formValues.date.day}`;
+    formValues.date = this.formatDate(formValues.date);
     const event: EventModel = formValues;
 
-    this.eventsService.addEvent(event).subscribe(
-      res => {
-        if (res) {
-          this.router.navigate(['/']);
+    if (this.editing) {
+      event.id = this.editId;
+      this.eventsService.editEvent(event).subscribe(
+        res => {
+          if (res) {
+            this.router.navigate(['/event', this.editId]);
+          }
         }
-      }
-    );
+      );
+    } else {
+      this.eventsService.addEvent(event).subscribe(
+        res => {
+          if (res) {
+            this.router.navigate(['/']);
+          }
+        }
+      );
+    }
+  }
+
+  cancelCreateEdit() {
+    if (this.editing) {
+      this.router.navigate(['/event', this.editId]);
+    } else {
+      this.router.navigate(['/']);
+    }
+  }
+
+  formatDate(dateObject: { year: number, month: number, day: number }) {
+    const year = dateObject.year;
+    const month = `${dateObject.month}`.padStart(2, '0');
+    const day = `${dateObject.day}`.padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
   }
 
   decideClosure(event, datepicker) {

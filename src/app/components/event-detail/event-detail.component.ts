@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { EventModel } from '../../models/event.model';
 import { EventsService } from '../../services/events.service';
 
@@ -14,22 +14,39 @@ export class EventDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private eventsService: EventsService
+    private eventsService: EventsService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
         this.eventsService.getEvent(+params.id).subscribe(
-          event => this.event = event
+          event => {
+            console.log(event);
+            this.event = event;
+          }
         );
       }
     );
   }
 
   getCategoryClass() {
-    return `event-${this.event.category.toLowerCase()}`;
+    return this.event
+      ? `event-${this.event.category.toLowerCase()}`
+      : '';
   }
-  
+
+  removeEvent() {
+    const choice = confirm('Are you sure?');
+
+    if (choice) {
+      this.eventsService.removeEvent(this.event.id).subscribe((res: boolean) => {
+        if (res) {
+          this.router.navigate(['/']);
+        }
+      });
+    }
+  }
 
 }

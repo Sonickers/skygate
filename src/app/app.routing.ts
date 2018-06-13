@@ -12,6 +12,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'event/new', component: CreateEventComponent },
   { path: 'event/:id', component: EventDetailComponent },
+  { path: 'event/:id/edit', component: CreateEventComponent },
   { path: 'login', component: SignInComponent },
   { path: '**', component: NotFoundComponent }
 ];
