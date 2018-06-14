@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { EventModel } from '../../models/event.model';
 import { EventsService } from '../../services/events.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-event-detail',
@@ -46,6 +47,18 @@ export class EventDetailComponent implements OnInit {
           this.router.navigate(['/']);
         }
       });
+    }
+  }
+
+  calcTimeToEvent(): string {
+    const eventMoment = moment(this.event.date);
+    const now = moment();
+    const days = Math.ceil(eventMoment.diff(now, 'days', true));
+
+    if (days > 0) {
+      return days === 1 ? `Today` : `In ${days} days`;
+    } else {
+      return 'Event over';
     }
   }
 

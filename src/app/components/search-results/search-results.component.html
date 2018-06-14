@@ -1,0 +1,21 @@
+<section class="hero is-small is-dark">
+  <div class="hero-body">
+    <app-searcher></app-searcher>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="tabs is-centered is-boxed">
+      <ul>
+        <li class="is-active">
+          <a>
+            <span>Search Results</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <app-event-list [events]="events"></app-event-list>
+  </div>
+
+</section>

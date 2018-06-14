@@ -17,7 +17,7 @@ import { EventDetailComponent } from './components/event-detail/event-detail.com
 import { AllCategoriesComponent } from './components/all-categories/all-categories.component';
 import { UpcomingEventsComponent } from './components/upcoming-events/upcoming-events.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { FooterComponent } from './components/footer/footer.component';
     AllCategoriesComponent,
     UpcomingEventsComponent,
     CreateEventComponent,
-    FooterComponent,
+    SearchResultsComponent,
   ],
   imports: [
     AppRoutingModule,

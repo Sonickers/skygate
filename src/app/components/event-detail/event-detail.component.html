@@ -40,21 +40,26 @@
               </button>
             </div>
           </div>
-          <div class="column">
+          <div class="column event-content">
             <p class="event-title">
               <strong>{{event?.title}}</strong>
             </p>
             <p>
+              <strong>ORGANIZER:</strong>
+              {{ event?.organizer }}
+            </p>
+            <p>
               <strong>DATE AND TIME:</strong>
-              <br>{{ event?.date | date }}</p>
-            <br>
+              {{ event?.date | date }}
+            </p>
             <p>
               <strong>LOCATION:</strong>
-              <br>{{event?.location}}</p>
-            <br>
+              {{event?.location}}
+            </p>
             <p>
               <strong>DESCRIPTION:</strong>
-              <br>{{event?.description}}</p>
+              {{event?.description}}
+            </p>
           </div>
         </div>
       </div>

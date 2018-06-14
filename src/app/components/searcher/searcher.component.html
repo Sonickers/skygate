@@ -1,20 +1,18 @@
 <div class="container has-text-centered">
   <h1 class="title is-1 has-text-white">Find your place in the SKY</h1>
-  <form class="has-text-centered">
-    <div class="field has-addons">
-      <div class="control">
-        <input class="input is-info is-medium" type="text" placeholder="Event, name, artist...">
-      </div>
-      <div class="control">
-        <input class="input is-info is-medium" type="text" placeholder="Location...">
-      </div>
-      <div class="control">        
-      </div>
-      <div class="control">
-        <a class="button is-info is-medium">
-          Search
-        </a>
-      </div>
+  <div class="field has-addons">
+    <div class="control">
+      <input class="input is-info is-medium" type="text" placeholder="Event, name, artist..." [(ngModel)]="phrase" (keyup.enter)="search()">
     </div>
-  </form>
+    <div class="control">
+      <input class="input is-info is-medium" type="text" placeholder="Location..." [(ngModel)]="location"  (keyup.enter)="search()">
+    </div>
+    <div class="control">
+    </div>
+    <div class="control">
+      <button class="button is-info is-medium" (click)="search()" [disabled]="!(phrase || location)">
+        Search
+      </button>
+    </div>
+  </div>
 </div>

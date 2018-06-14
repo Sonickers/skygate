@@ -9,6 +9,16 @@ section {
         font-weight: bold;
     }
 
+    &-content {
+        & > p {
+            margin-bottom: 1rem;
+
+            strong {
+                display: block;
+            }
+        }
+    }
+
     &-nav {
         display: flex;
         justify-content: space-between;

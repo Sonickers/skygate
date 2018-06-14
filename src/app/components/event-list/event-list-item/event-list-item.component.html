@@ -1,4 +1,7 @@
 <div class="box">
+  <div class="event-date">
+    <span>{{event.date}}</span>
+  </div>
   <article class="media event">
     <div class="media-left">
       <figure class="image is-64x64">
@@ -7,32 +10,21 @@
     </div>
     <div class="media-content">
       <div class="content">
-        <div class="event-title">{{event.title}}</div>
-        <div class="event-date">{{ event.date | date }}</div>
+        <div class="title is-5 event-title">{{event.title}}</div>
         <div class="event-location">{{event.location}}</div>
       </div>
     </div>
   </article>
   <div class="event-category">
-    <span class="tag is-grey is-rounded">{{event.category}}</span>
+    
   </div>
   <nav class="level is-mobile">
-    <a class="level-item" aria-label="reply">
-      <span class="icon is-small">
-        <i class="fas fa-reply" aria-hidden="true"></i>
-      </span>
-    </a>
-    <a class="level-item" aria-label="retweet">
-      <span class="icon is-small">
-        <i class="fas fa-retweet" aria-hidden="true"></i>
-      </span>
-    </a>
-    <a class="level-item" aria-label="like">
-      <span class="icon is-small">
-        <i class="fas fa-heart" aria-hidden="true"></i>
-      </span>
-    </a>
-    <br>
+    <span class="level-item" aria-label="time">
+      <span class="tag is-grey is-rounded">{{calcTimeToEvent()}}</span>
+    </span>
+    <span class="level-item" aria-label="like">
+      <span class="tag is-grey is-rounded">{{event.category}}</span>
+    </span>
     <div class="action">
       <a [href]="'/event/' + event.id" [routerLink]="['/event', event.id]" class="button is-info is-small">Read more</a>
     </div>
