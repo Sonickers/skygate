@@ -3,6 +3,7 @@ import { EventModel } from '../../models/event.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EventsService } from '../../services/events.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-create-event',
@@ -30,15 +31,21 @@ export class CreateEventComponent implements OnInit {
       if (params.id) {
         this.editing = true;
         this.eventsService.getEvent(+params.id).subscribe(event => {
+          const eventDate = moment(event.date);
+          const dateObj = { year: eventDate.get('year'), month: eventDate.get('month') + 1, day: eventDate.get('date') };
+
           this.editId = event.id;
           this.form = this.formBuilder.group({
             title: [event.title, Validators.required],
             location: [event.location, Validators.required],
             organizer: [event.organizer, Validators.required],
             poster: event.poster,
-            date: [event.date, Validators.required],
+            date: [null, Validators.required],
             category: [event.category, Validators.required],
             description: event.description,
+          });
+          this.form.patchValue({
+            date: dateObj,
           });
         });
       } else {
