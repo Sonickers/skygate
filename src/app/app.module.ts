@@ -10,7 +10,6 @@ import { SearcherComponent } from "./components/searcher/searcher.component";
 import { EventListComponent } from "./components/event-list/event-list.component";
 import { EventListItemComponent } from "./components/event-list/event-list-item/event-list-item.component";
 import { EventsService } from "./services/events.service";
-import { SignInComponent } from "./components/sign-in/sign-in.component";
 import { HomeComponent } from "./components/home/home.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { EventDetailComponent } from "./components/event-detail/event-detail.component";
@@ -26,7 +25,6 @@ import { SearchResultsComponent } from "./components/search-results/search-resul
     SearcherComponent,
     EventListComponent,
     EventListItemComponent,
-    SignInComponent,
     HomeComponent,
     NotFoundComponent,
     EventDetailComponent,
