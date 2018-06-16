@@ -1,10 +1,11 @@
 .hero {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/assets/img/sign-in-bacground.jpg');
-    background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/assets/img/sign-in-bacground.jpg");
+  background-size: cover;
 }
 
 .message {
-    width: 720px;
-    max-width: 100%;
-    margin: 0 auto;
+  width: 720px;
+  max-width: 100%;
+  margin: 0 auto;
 }

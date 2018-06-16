@@ -1,11 +1,11 @@
-@import '~bulma/bulma';
+@import "~bulma/bulma";
 
 body {
-    background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
 .tabs.is-boxed {
-    li.is-active a {
-        background-color: #F8F8F8;
-    }
+  li.is-active a {
+    background-color: #f8f8f8;
+  }
 }

@@ -1,16 +1,17 @@
 .hero {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/assets/img/create-event-background.jpg');
-    background-size: cover;   
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/assets/img/create-event-background.jpg");
+  background-size: cover;
 }
 
 .box {
-     width: 600px;
-     max-width: 100%;
-     margin: 0 auto;
+  width: 600px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 ::ng-deep .dropdown-menu {
-    &.show {
-        background-color: white;
-    }
+  &.show {
+    background-color: white;
+  }
 }
