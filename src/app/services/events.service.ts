@@ -26,17 +26,28 @@ export class EventsService {
   }
 
   getEventsForCategory(category): Observable<EventModel[]> {
-    return from(this.db.events.where('category').equalsIgnoreCase(category).toArray());
+    return from(
+      this.db.events
+        .where('category')
+        .equalsIgnoreCase(category)
+        .toArray()
+    );
   }
 
   searchEvents(phrase: string, location: string): Observable<EventModel[]> {
     return this.getEvents().pipe(
-      map(events => events.filter(event => {
-        const hasPhrase = phrase ? event.title.toLowerCase().includes(phrase.toLowerCase()) : false;
-        const hasLocation = location ? event.location.toLowerCase().includes(location.toLowerCase()) : false;
-        
-        return hasPhrase || hasLocation;
-      })),
+      map(events =>
+        events.filter(event => {
+          const hasPhrase = phrase
+            ? event.title.toLowerCase().includes(phrase.toLowerCase())
+            : false;
+          const hasLocation = location
+            ? event.location.toLowerCase().includes(location.toLowerCase())
+            : false;
+
+          return hasPhrase || hasLocation;
+        })
+      )
     );
   }
 
@@ -56,6 +67,11 @@ export class EventsService {
   }
 
   removeEvent(id: number): Observable<boolean> {
-    return from(this.db.events.where(':id').equals(id).delete());
+    return from(
+      this.db.events
+        .where(':id')
+        .equals(id)
+        .delete()
+    );
   }
 }
