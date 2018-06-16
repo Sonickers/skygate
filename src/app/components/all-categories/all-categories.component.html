@@ -33,6 +33,8 @@
       </li>
     </ul>
   </div>
-  <app-event-list [events]="events"></app-event-list>
-  <button class="button" *ngIf="total > 8" (click)='showAllEvents()'>SHOW ALL EVENTS</button>
+  <div class="events">
+    <app-event-list [events]="events | async"></app-event-list>
+  </div>
+  <!-- <button class="button" *ngIf="total > 8" (click)='showAllEvents()'>SHOW ALL EVENTS</button> -->
 </div>

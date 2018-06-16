@@ -8,7 +8,7 @@ import Dexie from 'dexie';
   providedIn: 'root'
 })
 export class EventsService {
-  private db: any;
+  private db: Dexie;
 
   constructor() {
     this.db = new Dexie('myDb');
@@ -18,16 +18,21 @@ export class EventsService {
   }
 
   getEvents(): Observable<EventModel[]> {
-    return from(this.db.events.toCollection().toArray());
+    return from(this.db['events'].toCollection().toArray());
   }
 
   getUpcomingEvents(): Observable<EventModel[]> {
-    return from(this.db.events.orderBy('date').toArray());
+    return from(
+      this.db['events']
+        .orderBy('date')
+        .limit(4)
+        .toArray()
+    );
   }
 
   getEventsForCategory(category): Observable<EventModel[]> {
     return from(
-      this.db.events
+      this.db['events']
         .where('category')
         .equalsIgnoreCase(category)
         .toArray()
@@ -52,23 +57,22 @@ export class EventsService {
   }
 
   getEvent(id: number): Observable<EventModel> {
-    return from(this.db.events.get(id));
+    return from(this.db['events'].get(id));
   }
 
   addEvent(event: EventModel): Observable<boolean> {
     const { id, ...data } = event;
-    return from(this.db.events.add(data));
+    return from(this.db['events'].add(data));
   }
 
   editEvent(event: EventModel): Observable<boolean> {
     const { id, ...data } = event;
-    console.log(id, data, event);
-    return from(this.db.events.update(+id, data));
+    return from(this.db['events'].update(+id, data));
   }
 
   removeEvent(id: number): Observable<boolean> {
     return from(
-      this.db.events
+      this.db['events']
         .where(':id')
         .equals(id)
         .delete()

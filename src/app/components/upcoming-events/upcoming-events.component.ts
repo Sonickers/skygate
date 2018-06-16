@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../services/events.service';
 import { EventModel } from '../../models/event.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-upcoming-events',
@@ -8,13 +9,11 @@ import { EventModel } from '../../models/event.model';
   styleUrls: ['./upcoming-events.component.scss']
 })
 export class UpcomingEventsComponent implements OnInit {
-  events: EventModel[];
+  events: Observable<EventModel[]>;
 
   constructor(private eventsService: EventsService) {}
 
   ngOnInit() {
-    this.eventsService.getUpcomingEvents().subscribe(events => {
-      this.events = events.splice(0, 4);
-    });
+    this.events = this.eventsService.getUpcomingEvents();
   }
 }

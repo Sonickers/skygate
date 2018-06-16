@@ -44,12 +44,9 @@ export class CreateEventComponent implements OnInit {
             location: [event.location, Validators.required],
             organizer: [event.organizer, Validators.required],
             poster: event.poster,
-            date: [null, Validators.required],
+            date: [dateObj, Validators.required],
             category: [event.category, Validators.required],
             description: event.description
-          });
-          this.form.patchValue({
-            date: dateObj
           });
         });
       } else {

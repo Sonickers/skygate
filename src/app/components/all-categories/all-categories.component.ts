@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventModel } from '../../models/event.model';
 import { EventsService } from '../../services/events.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-all-categories',
@@ -9,8 +10,7 @@ import { EventsService } from '../../services/events.service';
 })
 export class AllCategoriesComponent implements OnInit {
   currentCategory: string;
-  events: EventModel[];
-  total: number;
+  events: Observable<EventModel[]>;
 
   constructor(private eventsService: EventsService) {}
 
@@ -20,16 +20,12 @@ export class AllCategoriesComponent implements OnInit {
   }
 
   getAllEvents() {
-    this.eventsService.getEvents().subscribe(events => {
-      this.total = events.length;
-      this.events = events.slice(0, 8);
-    });
+    this.events = this.eventsService.getEvents();
   }
 
   getEventsByCategory(category: string) {
-    this.eventsService
-      .getEventsForCategory(category)
-      .subscribe(events => (this.events = events));
+    this.events = this.eventsService
+      .getEventsForCategory(category);
   }
 
   onCategorySelect(category: string) {
@@ -40,9 +36,5 @@ export class AllCategoriesComponent implements OnInit {
     } else {
       this.getAllEvents();
     }
-  }
-
-  showAllEvents() {
-    this.eventsService.getEvents().subscribe(events => (this.events = events));
   }
 }
