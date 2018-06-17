@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class AllCategoriesComponent implements OnInit {
   currentCategory: string;
+  isDropdownOpen: boolean;
   events: Observable<EventModel[]>;
 
   constructor(private eventsService: EventsService) {}
@@ -17,6 +18,7 @@ export class AllCategoriesComponent implements OnInit {
   ngOnInit() {
     this.currentCategory = null;
     this.getAllEvents();
+    this.isDropdownOpen = false;
   }
 
   getAllEvents() {

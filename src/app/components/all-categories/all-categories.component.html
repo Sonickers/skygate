@@ -1,5 +1,5 @@
 <div class="container">
-  <div id="all-categories" class="tabs is-centered is-boxed">
+  <div id="all-categories" class="tabs is-centered is-boxed is-hidden-mobile">
     <ul>
       <li [ngClass]="{'is-active': currentCategory === null}">
         <a (click)="onCategorySelect(null)">
@@ -33,8 +33,37 @@
       </li>
     </ul>
   </div>
+  <!-- This is select for mobile -->
+  <div class="dropdown is-hidden-tablet" [ngClass]="{'is-active': isDropdownOpen}">
+    <div class="dropdown-trigger">
+      <button (click)="isDropdownOpen = !isDropdownOpen" class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+        <span>All categories</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+      <div class="dropdown-content">
+        <a class="dropdown-item" [ngClass]="{'is-active': currentCategory === 'music'}" (click)="onCategorySelect('music')" (click)="isDropdownOpen = !isDropdownOpen">
+          Music
+        </a>
+        <a class="dropdown-item" [ngClass]="{'is-active': currentCategory === 'arts'}" (click)="onCategorySelect('arts')" (click)="isDropdownOpen = !isDropdownOpen">
+          Arts
+        </a>
+        <a class="dropdown-item" [ngClass]="{'is-active': currentCategory === 'sport'}" (click)="onCategorySelect('sport')" (click)="isDropdownOpen = !isDropdownOpen">
+          Sport
+        </a>
+        <a class="dropdown-item" [ngClass]="{'is-active': currentCategory === 'classes'}" (click)="onCategorySelect('classes')" (click)="isDropdownOpen = !isDropdownOpen">
+          Classes
+        </a>
+        <a class="dropdown-item" [ngClass]="{'is-active': currentCategory === 'parties'}" (click)="onCategorySelect('parties')" (click)="isDropdownOpen = !isDropdownOpen">
+          Parties
+        </a>
+      </div>
+    </div>
+  </div>
   <div class="events">
     <app-event-list [events]="events | async"></app-event-list>
   </div>
-  <!-- <button class="button" *ngIf="total > 8" (click)='showAllEvents()'>SHOW ALL EVENTS</button> -->
 </div>

@@ -1,13 +1,22 @@
 li {
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 button {
-    margin-top: 30px;
-    width: 100%;
+  margin-top: 30px;
+  width: 100%;
 }
 
 .events {
-    min-height: 500px;
+  min-height: 500px;
+}
+
+.dropdown {
+  button {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3273dc;
+    margin: 0 auto;
+  }
 }
