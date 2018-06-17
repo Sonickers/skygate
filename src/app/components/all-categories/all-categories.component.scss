@@ -13,10 +13,18 @@ button {
 }
 
 .dropdown {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 15px; 
   button {
     font-size: 20px;
     font-weight: bold;
     color: #3273dc;
     margin: 0 auto;
+  }
+  &-menu {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

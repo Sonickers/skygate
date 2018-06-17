@@ -37,7 +37,7 @@
   <div class="dropdown is-hidden-tablet" [ngClass]="{'is-active': isDropdownOpen}">
     <div class="dropdown-trigger">
       <button (click)="isDropdownOpen = !isDropdownOpen" class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-        <span>All categories</span>
+        <span>{{currentCategory || 'All categories'}}</span>
         <span class="icon is-small">
           <i class="fas fa-angle-down" aria-hidden="true"></i>
         </span>
