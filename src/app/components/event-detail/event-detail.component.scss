@@ -24,24 +24,26 @@ section {
     justify-content: space-between;
   }
 
+  $bg-gradient: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+
   &-music {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    background-image: $bg-gradient,
       url("/assets/img/music-background.jpg");
   }
   &-classes {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    background-image: $bg-gradient,
       url("/assets/img/classes-background.jpg");
   }
   &-arts {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    background-image: $bg-gradient,
       url("/assets/img/arts-background.jpg");
   }
   &-sport {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    background-image: $bg-gradient,
       url("/assets/img/sport-background.jpg");
   }
   &-parties {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    background-image: $bg-gradient,
       url("/assets/img/parties-background.jpg");
   }
 }
